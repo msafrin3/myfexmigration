@@ -84,8 +84,8 @@ class Restructure extends Command
                 // array_push($f_sect88, $cols);
             }
             try {
-                $data = $this->removeNonColumn('franchise_staging', $cols);
-                DB::table('franchise_staging')->insert($data);
+                $data = $this->removeNonColumn('fm_csv_clean', $cols);
+                DB::table('fm_csv_clean')->insert($data);
             } catch(\Exception $e) {
                 echo "Error: ".$e->getMessage()."\n";
             }
