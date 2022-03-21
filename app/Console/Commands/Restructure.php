@@ -41,7 +41,7 @@ class Restructure extends Command
     public function handle()
     {
         $forms = ['f_sect14_1', 'f_sect54_1', 'f_sect55_1', 'f_sect6_1', 'f_sect88_1'];
-        $fm_csv = DB::connection('myfex1')->table('fm_csv')->where('csv_data', '!=', null)->where('csv_data', '!=', '')->whereIn('form_name', $forms)->get();
+        $fm_csv = DB::connection('myfex_v1_latest')->table('fm_csv')->where('csv_data', '!=', null)->where('csv_data', '!=', '')->whereIn('form_name', $forms)->get();
         // sections
         $f_sect14 = [];
         $f_sect54 = [];
@@ -85,7 +85,7 @@ class Restructure extends Command
             }
             try {
                 $data = $this->removeNonColumn('fm_csv_clean', $cols);
-                DB::table('fm_csv_clean')->insert($data);
+                DB::connection('myfex_v1_latest')->table('fm_csv_clean')->insert($data);
             } catch(\Exception $e) {
                 echo "Error: ".$e->getMessage()."\n";
             }
